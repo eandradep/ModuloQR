@@ -18,6 +18,7 @@ def start_qr_generator():
         generator = QRGeneratorLogic.QRGeneratorLogic(route_file, route_save_qr_image, '')
         generator.read_excel()
         generator.generate_qr_images()
+        generator.print_data()
     else:
         qr_string = str(sys.argv[2])
         route_save_qr_image = str(sys.argv[3])

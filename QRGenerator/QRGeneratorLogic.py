@@ -10,6 +10,7 @@ import pyqrcode
 import base64
 import uuid
 
+from ConexionBD.CRUD.QrCode import QrCode
 from entity.CodeQR import CodeQR
 
 
@@ -40,15 +41,15 @@ class QRGeneratorLogic:
             self.__codeQRList.append(code_qr)
 
     def generate_qr_images(self):
-        for code_qr in self.__codeQRList:
-            url = pyqrcode.create(str(base64.b64encode(code_qr.get_str().encode("utf-8")), "utf-8"))
+        for i in range(len(self.__codeQRList)):
+            url = pyqrcode.create(str(base64.b64encode(self.__codeQRList[i].get_str().encode("utf-8")), "utf-8"))
             self.__qr_string = str(self.__route_save_qr_image+'/' + str(uuid.uuid1()) + '.svg')
             url.svg(self.__qr_string, scale=8)
-            code_qr.image_url = self.__qr_string
+            self.__codeQRList[i].image_url = self.__qr_string
 
     def print_data(self):
-        for code_qr in self.__codeQRList:
-            print(code_qr.get_str())
+        qr_code = QrCode()
+        qr_code.save_qr_code(self.__codeQRList)
 
     def update_qr_image(self):
         url = pyqrcode.create(str(base64.b64encode(str(self.__qr_string).encode("utf-8")), "utf-8"))
