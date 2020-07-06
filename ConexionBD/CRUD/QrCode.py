@@ -30,4 +30,4 @@ class QrCode:
                 cursor.rollback()
                 print("PROCESS: Error al Registrar Shape Parent" + str(e))
             finally:
-                database_connection.close()
+                cursor.close()
