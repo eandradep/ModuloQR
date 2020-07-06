@@ -25,11 +25,12 @@ class CodeQR:
     tipo = ''
     operadora = ''
     servicio = ''
+    image_url = ''
 
     def __init__(self, codigo, reg, cedula,
                  propietario,estado, situacion,
                  placa, chasis, anio,
-                 marca, tipo, operadora, servicio):
+                 marca, tipo, operadora, servicio, image_url):
         self.codigo = codigo
         self.reg = reg
         self.cedula = cedula
@@ -43,10 +44,11 @@ class CodeQR:
         self.tipo = tipo
         self.operadora = operadora
         self.servicio = servicio
+        self.image_url = image_url
 
     def get_str(self):
-        return "" + self.codigo + "," + self.reg + "," + self.cedula + "," + self.propietario \
-              + "," + self.estado + "," + self.situacion + "," + self.placa + "," + self.chasis \
-              + "," + self.anio + "," + self.marca + "," + self.tipo + "," + self.operadora \
-              + "," + self.servicio + ""
+        return "" + self.codigo + "*_*" + self.reg + "*_*" + self.cedula + "*_*" + self.propietario \
+              + "*_*" + self.estado + "*_*" + self.situacion + "*_*" + self.placa + "*_*" + self.chasis \
+              + "*_*" + self.anio + "*_*" + self.marca + "*_*" + self.tipo + "*_*" + self.operadora \
+              + "*_*" + self.servicio
 

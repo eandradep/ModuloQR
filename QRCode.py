@@ -1,40 +1,29 @@
 #!/usr/bin/python3
+"""
+    Conexión a SQLServer con Python
+    Ejemplo de CRUD evitando inyecciones SQL
+    @author Edison Andrade
+    @email eandradep@est.ups.edu.ec
+"""
+import sys
 
-import pandas as pd
-import hashlib
-import pyqrcode
-import base64
-from entity.CodeQR import CodeQR
-
-
-def encrypt_string(hash_string):
-    return hashlib.sha1(hash_string.encode()).hexdigest()
-
-
-def get_qr_code(code_qr_entity):
-    url = pyqrcode.create(str(base64.b64encode(code_qr_entity.get_str().encode("utf-8")), "utf-8"))
-    url.svg(code_qr_entity.cedula + '-' + code_qr_entity.placa + '-' + code_qr_entity.operadora+'.svg', scale=8)
+from QRGenerator import QRGeneratorLogic
 
 
-df = pd.read_excel("/home/edisonandrade/Downloads/registros_municipales.xls",
-                   names=['COD', 'REG', 'CEDULA', 'PROPIETARIO', 'ESTADO',
-                          'SITUACION', 'PLACA', 'CHASIS', 'ANIO',
-                          'MARCA', 'TIPO', 'OPERADORA', 'SERVICIO'])
+def start_qr_generator():
+    print("PROCESS: Inicia Codigo Python")
+    if str(sys.argv[1]) == '1':
+        route_file = str(sys.argv[2])
+        route_save_qr_image = str(sys.argv[3])
+        generator = QRGeneratorLogic.QRGeneratorLogic(route_file, route_save_qr_image, '')
+        generator.read_excel()
+        generator.generate_qr_images()
+    else:
+        qr_string = str(sys.argv[2])
+        route_save_qr_image = str(sys.argv[3])
+        generator = QRGeneratorLogic.QRGeneratorLogic('', route_save_qr_image, qr_string)
+        generator.update_qr_image()
 
-CodeQRList = []
-for i in range(len(df)):
-    codeQR = CodeQR(str(df['COD'][i]).strip(), str(df['REG'][i]).strip(), str(df['CEDULA'][i]).strip(),
-                    str(df['PROPIETARIO'][i]).strip(), str(df['ESTADO'][i]).strip(), str(df['SITUACION'][i]).strip(),
-                    str(df['PLACA'][i]).strip(), str(df['CHASIS'][i]).strip(), str(df['ANIO'][i]).strip(),
-                    str(df['MARCA'][i]).strip(), str(df['TIPO'][i]).strip(), str(df['OPERADORA'][i]).strip(),
-                    str(df['SERVICIO'][i]).strip())
-    sha_signature = encrypt_string(str(codeQR.get_str()))
-    CodeQRList.append(codeQR)
 
-get_qr_code(CodeQRList[3])
-get_qr_code(CodeQRList[5])
-get_qr_code(CodeQRList[8])
-
-# CLIENTE : 1
-# CONTROLADOR : 2
-# AGENTE : 3
+if __name__ == "__main__":
+    start_qr_generator()
