@@ -24,6 +24,8 @@ class QRGeneratorLogic:
         if pic.mode in ('P', '1'):
             pic = pic.convert("RGB")
         # Resize to fit the target size
+        pic.save(png_file_location)
+        pic = Image.open(png_file_location)
         draw = ImageDraw.Draw(pic)
         font = ImageFont.truetype("/opt/wildfly/standalone/data/python/ModuloQR/qrgenerator/OpenSans-Bold.ttf", 60)
         lines = self.__qr_code__.splitlines()
