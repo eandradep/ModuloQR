@@ -22,7 +22,7 @@ def start_qr_generator():
         print(str(sys.argv[2]))
         print(str(sys.argv[3]))
         print(str(sys.argv[4]))
-        
+
         qr_generator = QRGeneratorLogic(str(sys.argv[2]), str(sys.argv[3]), str(sys.argv[4]))
         qr_generator.generate_qr_code()
 
