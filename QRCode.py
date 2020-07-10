@@ -7,16 +7,20 @@
 """
 import sys
 
-from QRGenerator import QRGeneratorLogic
+from filereader.FileReader import FileReader
+from qrgenerator.QRGenerator import QRGeneratorLogic
 
 
 def start_qr_generator():
     print("PROCESS: Inicia Codigo Python")
-    route_file = str(sys.argv[1])
-    route_save_qr_image = str(sys.argv[2])
-    generator = QRGeneratorLogic.QRGeneratorLogic(route_file, route_save_qr_image, '')
-    generator.read_excel()
-    generator.code_action()
+    if str(sys.argv[1]) == str(1):
+        route_file = str(sys.argv[2])
+        generator = FileReader(route_file)
+        generator.read_excel()
+        generator.code_action()
+    else:
+        qr_generator = QRGeneratorLogic(str(sys.argv[2]), str(sys.argv[3]), str(sys.argv[4]))
+        qr_generator.generate_qr_code()
 
 
 if __name__ == "__main__":

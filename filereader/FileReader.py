@@ -12,20 +12,15 @@ from ConexionBD.CRUD.QrCode import QrCode
 from entity.CodeQR import CodeQR
 
 
-class QRGeneratorLogic:
+class FileReader:
     __route_file = ''
-    __route_save_qr_image = ''
-    __qr_string = ''
     __codeQRList = []
     __codeQRSaveList = []
     __codeQRUpdateList = []
-    __key_bytes = 32
     __qr_code_crud = any
 
-    def __init__(self, route_file, route_save_qr_image, qr_string):
+    def __init__(self, route_file):
         self.__route_file = route_file
-        self.__route_save_qr_image = route_save_qr_image
-        self.__qr_string = qr_string
         self.__qr_code_crud = QrCode()
 
     def read_excel(self):
