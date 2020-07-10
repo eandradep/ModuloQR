@@ -16,12 +16,12 @@ class QRGeneratorLogic:
         self.__crypt_text__ = crypt_text
 
     def generate_qr_code(self):
-        eps_file_location = str(self.__file_location__) + '.png'
+        eps_file_location = str(self.__file_location__) + '-eps.png'
+        png_file_location = str(self.__file_location__) + '.png'
         url = pyqrcode.create(self.__crypt_text__)
-        url.png(eps_file_location, scale=10)
+        url.png(eps_file_location, scale=100)
         target_bounds = (2080, 2080)
         pic = Image.open(eps_file_location)
-        pic.load(scale=10)
         if pic.mode in ('P', '1'):
             pic = pic.convert("RGB")
         ratio = min(target_bounds[0] / pic.size[0],
@@ -38,5 +38,5 @@ class QRGeneratorLogic:
         x -= w / 2
         y = y - 100
         draw.text((x, y), self.__qr_code__, font=font, fill="Black")
-        pic.save(eps_file_location)
+        pic.save(png_file_location)
 
