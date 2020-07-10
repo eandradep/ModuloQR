@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import pyqrcode
 from PIL import Image, ImageDraw, ImageFont
 import os

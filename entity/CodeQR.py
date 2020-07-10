@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
     Conexión a SQLServer con Python
     Ejemplo de CRUD evitando inyecciones SQL
