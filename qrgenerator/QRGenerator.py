@@ -21,6 +21,7 @@ class QRGeneratorLogic:
         url.png(eps_file_location, scale=10)
         # Guardar EPS
         pic = Image.open(eps_file_location)
+        pic.load(scale=10)
         if pic.mode in ('P', '1'):
             pic = pic.convert("RGB")
         # Resize to fit the target size
