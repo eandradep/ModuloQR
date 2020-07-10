@@ -27,7 +27,6 @@ class QRGeneratorLogic:
         print('paso 3:')
         pic = Image.open(eps_file_location)
         print('paso 4:')
-        pic.load(scale=10)
         print('paso 5:')
         if pic.mode in ('P', '1'):
             pic = pic.convert("RGB")
