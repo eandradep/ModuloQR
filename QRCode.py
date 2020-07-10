@@ -12,18 +12,11 @@ from QRGenerator import QRGeneratorLogic
 
 def start_qr_generator():
     print("PROCESS: Inicia Codigo Python")
-    if str(sys.argv[1]) == '1':
-        route_file = str(sys.argv[2])
-        route_save_qr_image = str(sys.argv[3])
-        generator = QRGeneratorLogic.QRGeneratorLogic(route_file, route_save_qr_image, '')
-        generator.read_excel()
-        generator.generate_qr_images()
-        generator.print_data()
-    else:
-        qr_string = str(sys.argv[2])
-        route_save_qr_image = str(sys.argv[3])
-        generator = QRGeneratorLogic.QRGeneratorLogic('', route_save_qr_image, qr_string)
-        generator.update_qr_image()
+    route_file = str(sys.argv[1])
+    route_save_qr_image = str(sys.argv[2])
+    generator = QRGeneratorLogic.QRGeneratorLogic(route_file, route_save_qr_image, '')
+    generator.read_excel()
+    generator.code_action()
 
 
 if __name__ == "__main__":

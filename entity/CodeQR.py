@@ -45,16 +45,3 @@ class CodeQR:
         self.operadora = operadora
         self.servicio = servicio
         self.image_url = image_url
-
-    def get_str(self):
-        return "" + self.codigo + "*_*" + self.reg + "*_*" + self.cedula + "*_*" + self.propietario \
-              + "*_*" + self.estado + "*_*" + self.situacion + "*_*" + self.placa + "*_*" + self.chasis \
-              + "*_*" + self.anio + "*_*" + self.marca + "*_*" + self.tipo + "*_*" + self.operadora \
-              + "*_*" + self.servicio
-
-    # def get_str_imageurl(self):
-    #     return "" + self.codigo + "*_*" + self.reg + "*_*" + self.cedula + "*_*" + self.propietario \
-    #           + "*_*" + self.estado + "*_*" + self.situacion + "*_*" + self.placa + "*_*" + self.chasis \
-    #           + "*_*" + self.anio + "*_*" + self.marca + "*_*" + self.tipo + "*_*" + self.operadora \
-    #           + "*_*" + self.servicio + "*_*" + self.image_url
-
