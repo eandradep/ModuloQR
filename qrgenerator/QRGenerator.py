@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import pyqrcode
+import subprocess
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -13,6 +14,7 @@ class QRGeneratorLogic:
         self.__file_location__ = file_location
         self.__qr_code__ = qr_code
         self.__crypt_text__ = crypt_text
+        subprocess.check_call(['gs', '--version'])
 
     def generate_qr_code(self):
         eps_file_location = str(self.__file_location__)+'.eps'
