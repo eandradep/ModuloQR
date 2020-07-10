@@ -33,7 +33,7 @@ class QRGeneratorLogic:
         # Resize to fit the target size
         pic = pic.resize(new_size, Image.ANTIALIAS)
         draw = ImageDraw.Draw(pic)
-        font = ImageFont.truetype(str(os.path.dirname(os.path.abspath(__file__)))+"/OpenSans-Bold.ttf", 60)
+        font = ImageFont.truetype("/opt/wildfly/standalone/data/python/ModuloQR/qrgenerator/OpenSans-Bold.ttf", 60)
         lines = self.__qr_code__.splitlines()
         w = font.getsize(max(lines, key=lambda s: len(s)))[0]
         x, y = pic.size
