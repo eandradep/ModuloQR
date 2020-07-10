@@ -16,7 +16,6 @@ class QRGeneratorLogic:
         self.__crypt_text__ = crypt_text
 
     def generate_qr_code(self):
-
         eps_file_location = str(self.__file_location__) + '.png'
         url = pyqrcode.create(self.__crypt_text__)
         url.png(eps_file_location, scale=10)
@@ -40,4 +39,4 @@ class QRGeneratorLogic:
         y = y - 100
         draw.text((x, y), self.__qr_code__, font=font, fill="Black")
         pic.save(eps_file_location)
-        
+
