@@ -18,6 +18,8 @@ class QRGeneratorLogic:
     def generate_qr_code(self):
         eps_file_location = str(self.__file_location__)+'.eps'
         png_file_location = str(self.__file_location__)+'.png'
+        print('url eps:'+eps_file_location)
+        print('url eps:'+png_file_location)
         url = pyqrcode.create(self.__crypt_text__)
         url.eps(eps_file_location, scale=10)
         target_bounds = (2080, 2080)
