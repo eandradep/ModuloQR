@@ -57,6 +57,8 @@ class FileReader:
         if len(self.__codeQRUpdateList) > 0:
             print("PROCESS: EXISTEN DATOS A ACTUALIZAR")
             self.__qr_code_crud.update_qr_code(self.__codeQRUpdateList)
-        self.__qr_code_crud.database_connection.close()
 
+    def close_connection(self):
+        self.__qr_code_crud.database_connection.close()
+        print("PROCESS: CONEXION CERRADA")
 

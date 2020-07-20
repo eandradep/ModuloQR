@@ -8,6 +8,7 @@
 import sys
 
 from filereader.FileReader import FileReader
+from filezip.CompressFile import CompressFile
 from qrgenerator.QRGenerator import QRGeneratorLogic
 
 
@@ -18,9 +19,13 @@ def start_qr_generator():
         generator = FileReader(route_file)
         generator.read_excel()
         generator.code_action()
-    else:
+    if str(sys.argv[1]) == str(2):
         qr_generator = QRGeneratorLogic(str(sys.argv[2]), str(sys.argv[3]), str(sys.argv[4]))
         qr_generator.generate_qr_code()
+    if str(sys.argv[1]) == str(3):
+        compress_file = CompressFile(str(sys.argv[2]), str(sys.argv[3]))
+        compress_file.generate_zip_file()
+    FileReader('').close_connection()
 
 
 if __name__ == "__main__":
