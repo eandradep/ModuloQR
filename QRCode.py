@@ -7,6 +7,7 @@
 """
 import sys
 
+from ConexionBD.CRUD.ReportCancel import ReportCancel
 from filereader.FileReader import FileReader
 from filezip.CompressFile import CompressFile
 from qrgenerator.QRGenerator import QRGeneratorLogic
@@ -25,6 +26,9 @@ def start_qr_generator():
     if str(sys.argv[1]) == str(3):
         compress_file = CompressFile(str(sys.argv[2]), str(sys.argv[3]))
         compress_file.generate_zip_file()
+    if str(sys.argv[1]) == str(4):
+        report = ReportCancel()
+        report.cancelReport(str(sys.argv[2]))
     FileReader('').close_connection()
 
 
