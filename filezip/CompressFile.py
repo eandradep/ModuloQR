@@ -23,7 +23,11 @@ class CompressFile:
         self.__save_location__ = __file_path__
         for obj in self.list_files():
             if str(obj).split('.')[1] == 'png':
-                self.__file_list__.append(self.__file_path__ + '' + str(obj))
+                if str(obj).split('.')[0].find("-eps") >= 0:
+                    print('NO SE AGREGA')
+                else:
+                    self.__file_list__.append(self.__file_path__ + '' + str(obj))
+
 
     def generate_zip_file(self):
         compression = zipfile.ZIP_DEFLATED
