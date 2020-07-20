@@ -28,7 +28,6 @@ class CompressFile:
                 else:
                     self.__file_list__.append(self.__file_path__ + '' + str(obj))
 
-
     def generate_zip_file(self):
         compression = zipfile.ZIP_DEFLATED
         file_name = self.__save_location__+"ALLQRCODE.zip"
